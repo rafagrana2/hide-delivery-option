@@ -4,7 +4,7 @@ query RunInput {
 				deliveryAddress {
 					provinceCode
 				}
-				
+
 				deliveryOptions {
 					handle
 					title
@@ -15,6 +15,10 @@ query RunInput {
 				customer {
 					hasAnyTag(tags: "hide")
 				}
+			}
+
+			attribute {
+				key
 			}
   	}
 }

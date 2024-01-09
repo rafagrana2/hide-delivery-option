@@ -4,9 +4,9 @@ import type {
 } from "../generated/api";
 
 export function run(input: RunInput): FunctionRunResult {
-  const hideDeliveryOption = input.cart?.buyerIdentity?.customer?.hasAnyTag;
+  const hideStandard = input.cart?.attribute?.key === 'hideStandard';
 
-  if (hideDeliveryOption) {
+  if (hideStandard) {
     let toHide = input.cart.deliveryGroups
       .flatMap(group => group.deliveryOptions)
       .filter(option => option.title === 'Standard')
@@ -19,9 +19,18 @@ export function run(input: RunInput): FunctionRunResult {
     return {
       operations: toHide
     };
-  }
+  } else {
+    let toHide = input.cart.deliveryGroups
+    .flatMap(group => group.deliveryOptions)
+    .filter(option => option.title === 'Express')
+    .map(option => ({
+      hide: {
+        deliveryOptionHandle: option.handle
+      }
+    }));
 
-  return {
-    operations: []
-  };
+    return {
+      operations: toHide
+    };
+  }
 }
