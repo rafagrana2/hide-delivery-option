@@ -1,0 +1,18 @@
+query RunInput {
+  	cart {
+    	deliveryGroups {
+      	deliveryAddress {
+        	provinceCode
+      	}
+      	deliveryOptions {
+        	handle
+        	title
+      	}
+    	}
+			buyerIdentity {
+				customer {
+					hasAnyTag(tags: "hide")
+				}
+			}
+  	}
+}
