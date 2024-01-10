@@ -4,7 +4,7 @@ import type {
 } from "../generated/api";
 
 export function run(input: RunInput): FunctionRunResult {
-  const hideStandard = input.cart?.attribute?.key === 'hideStandard';
+  const hideStandard = input.cart?.attribute?.value === 'hideStandard';
 
   if (hideStandard) {
     let toHide = input.cart.deliveryGroups

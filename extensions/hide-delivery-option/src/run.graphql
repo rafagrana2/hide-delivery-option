@@ -11,14 +11,8 @@ query RunInput {
 				}
     	}
 
-			buyerIdentity {
-				customer {
-					hasAnyTag(tags: "hide")
-				}
-			}
-
-			attribute {
-				key
+			attribute(key: "hideStandard") {
+				value
 			}
   	}
 }
