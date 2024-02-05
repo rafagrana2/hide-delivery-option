@@ -3,6 +3,7 @@ query RunInput {
     	deliveryGroups {
 				deliveryAddress {
 					provinceCode
+					countryCode
 				}
 
 				deliveryOptions {
